@@ -23,11 +23,17 @@ describe("fileResource", () => {
       },
       async transform(filename) {
         const module = require(filename);
+        const obj = {
+          one: "one",
+          two: 2,
+          three: ["red", "yellow", "orange"]
+        };
         return {
           source: property.dynamicImport(filename),
           title: property.infer(module.title),
           slug: property.infer(module.slug),
-          date: property.date(2000, 6, 8)
+          date: property.date(2000, 6, 8),
+          ...property.inferMany(obj)
         };
       },
       api: [
@@ -42,12 +48,18 @@ describe("fileResource", () => {
   source: () => import("../fixtures/pages/one.js"),
   title: "One",
   slug: "one",
-  date: new Date(2000, 6, 8)
+  date: new Date(2000, 6, 8),
+  one: "one",
+  two: 2,
+  three: ["red", "yellow", "orange"]
 }, {
   source: () => import("../fixtures/pages/two.js"),
   title: "Two",
   slug: "two",
-  date: new Date(2000, 6, 8)
+  date: new Date(2000, 6, 8),
+  one: "one",
+  two: 2,
+  three: ["red", "yellow", "orange"]
 }];
 
 const api = {

@@ -21,8 +21,12 @@ export interface APIProperties {
 
 export type API = Array<APIFn>
 
-export interface Value<T = unknown> {
-  value: T;
+export interface ValueProperties {
+  [key: string]: any;
+}
+
+export interface Value {
+  props: any;
   ast(value: any, directory?: string): Expression;
 }
 

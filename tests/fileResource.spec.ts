@@ -26,7 +26,8 @@ describe("fileResource", () => {
         return {
           source: property.dynamicImport(filename),
           title: property.infer(module.title),
-          slug: property.infer(module.slug)
+          slug: property.infer(module.slug),
+          date: property.date(2000, 6, 8)
         };
       },
       api: [
@@ -40,11 +41,13 @@ describe("fileResource", () => {
     expect(contents).toEqual(`const basic = [{
   source: () => import("../fixtures/pages/one.js"),
   title: "One",
-  slug: "one"
+  slug: "one",
+  date: new Date(2000, 6, 8)
 }, {
   source: () => import("../fixtures/pages/two.js"),
   title: "Two",
-  slug: "two"
+  slug: "two",
+  date: new Date(2000, 6, 8)
 }];
 
 const api = {

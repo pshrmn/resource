@@ -20,7 +20,7 @@ export default function dataToString(options: ASTOptions) {
               return (
                 types.OBJECT_PROP(
                   types.ID(key),
-                  prop.ast(prop.value, directory)
+                  prop.ast(prop.props, directory)
                 )
               );
             })

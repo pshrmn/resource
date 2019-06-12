@@ -2,15 +2,18 @@ import { types } from "@posh/ast";
 
 import { ValueProperties } from "../types";
 
-export default function infer(value: any) {
+export default function date(...args: Array<any>) {
   return {
     ast,
     props: {
-      value
+      args
     }
   };
 }
 
 function ast(props: ValueProperties) {
-  return types.INFER(props.value);
+  return types.NEW(
+    types.ID("Date"),
+    props.args.map(types.INFER)
+  );
 }

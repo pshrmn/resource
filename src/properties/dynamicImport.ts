@@ -1,22 +1,24 @@
 import path from "path";
 import { types } from "@posh/ast";
 
-import { Value } from "../types";
+import { ValueProperties } from "../types";
 
-export default function dynamicImport(path: string): Value<string> {
+export default function dynamicImport(path: string) {
   return {
-    value: path,
-    ast
+    ast,
+    props: {
+      path
+    }
   };
 }
 
-function ast(value: string, directory: string) {
+function ast(props: ValueProperties, directory: string) {
   return types.ARROW_FUNCTION(
     [],
     types.CALL(
       "import",
       [
-        types.STRING(path.relative(directory, value))
+        types.STRING(path.relative(directory, props.path))
       ]
     )
   );

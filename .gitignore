@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.build/
+.rpt2_cache/
+*.log
+
+tests/outputs/

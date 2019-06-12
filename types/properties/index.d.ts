@@ -1,4 +1,5 @@
+import date from "./date";
 import dynamicImport from "./dynamicImport";
 import infer from "./infer";
-import date from "./date";
-export { infer, dynamicImport, date };
+import inferMany from "./inferMany";
+export { date, dynamicImport, infer, inferMany };

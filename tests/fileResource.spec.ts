@@ -21,19 +21,14 @@ describe("fileResource", () => {
           path.join(FIXTURES, "pages", "*.js")
         );
       },
-      async transform(filename) {
+      async transform(filename, helpers) {
         const module = require(filename);
-        const obj = {
-          one: "one",
-          two: 2,
-          three: ["red", "yellow", "orange"]
-        };
         return {
-          source: property.dynamicImport(filename),
+          source: property.dynamicImport(
+            helpers.relative(filename)
+          ),
           title: property.infer(module.title),
           slug: property.infer(module.slug),
-          date: property.date(2000, 6, 8),
-          ...property.inferMany(obj)
         };
       },
       api: [
@@ -47,19 +42,11 @@ describe("fileResource", () => {
     expect(contents).toEqual(`const basic = [{
   source: () => import("../fixtures/pages/one.js"),
   title: "One",
-  slug: "one",
-  date: new Date(2000, 6, 8),
-  one: "one",
-  two: 2,
-  three: ["red", "yellow", "orange"]
+  slug: "one"
 }, {
   source: () => import("../fixtures/pages/two.js"),
   title: "Two",
-  slug: "two",
-  date: new Date(2000, 6, 8),
-  one: "one",
-  two: 2,
-  three: ["red", "yellow", "orange"]
+  slug: "two"
 }];
 
 const api = {

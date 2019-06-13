@@ -1,8 +1,13 @@
 import { types } from "@posh/ast";
 
-import { ValueProperties } from "../types";
+import { Inferable } from "@posh/ast";
+import { Value } from "../types";
 
-export default function infer(value: any) {
+export interface InferProps {
+  value: Inferable;
+}
+
+export default function infer(value: Inferable): Value<InferProps> {
   return {
     ast,
     props: {
@@ -11,6 +16,6 @@ export default function infer(value: any) {
   };
 }
 
-function ast(props: ValueProperties) {
+function ast(props: InferProps) {
   return types.INFER(props.value);
 }

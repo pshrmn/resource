@@ -1,8 +1,12 @@
 import { types } from "@posh/ast";
 
-import { ValueProperties } from "../types";
+import { Value } from "../types";
 
-export default function date(...args: Array<any>) {
+export interface DateProps {
+  args: Array<any>;
+}
+
+export default function date(...args: Array<any>): Value<DateProps> {
   return {
     ast,
     props: {
@@ -11,7 +15,7 @@ export default function date(...args: Array<any>) {
   };
 }
 
-function ast(props: ValueProperties) {
+function ast(props: DateProps) {
   return types.NEW({
     callee: types.ID("Date"),
     arguments: props.args.map(types.INFER)

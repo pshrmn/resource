@@ -6,7 +6,6 @@ export default function dataToString(options: ASTOptions) {
   const {
     name,
     nodes,
-    directory,
     api: apiFns
   } = options;
   const arr = types.CONST({
@@ -20,7 +19,7 @@ export default function dataToString(options: ASTOptions) {
               return (
                 types.OBJECT_PROP({
                   key: types.ID(key),
-                  value: prop.ast(prop.props, directory)
+                  value: prop.ast(prop.props)
                 })
               );
             })

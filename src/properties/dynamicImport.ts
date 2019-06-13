@@ -13,13 +13,12 @@ export default function dynamicImport(path: string) {
 }
 
 function ast(props: ValueProperties, directory: string) {
-  return types.ARROW_FUNCTION(
-    [],
-    types.CALL(
-      "import",
-      [
+  return types.ARROW_FUNCTION({
+    body: types.CALL({
+      callee: "import",
+      arguments: [
         types.STRING(path.relative(directory, props.path))
       ]
-    )
-  );
+    })
+  });
 }

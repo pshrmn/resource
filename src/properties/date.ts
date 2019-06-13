@@ -12,8 +12,8 @@ export default function date(...args: Array<any>) {
 }
 
 function ast(props: ValueProperties) {
-  return types.NEW(
-    types.ID("Date"),
-    props.args.map(types.INFER)
-  );
+  return types.NEW({
+    callee: types.ID("Date"),
+    arguments: props.args.map(types.INFER)
+  });
 }

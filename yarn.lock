@@ -1600,10 +1600,10 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@posh/ast@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@posh/ast/-/ast-0.5.2.tgz#2fa4b10ba906c5d23c6a96bcfda5bcbbe21d327a"
-  integrity sha512-kKSBncXzEHMeihIXX7tKALXkLCusRyoSQ+0cRoIPOXw8JKciBRRR0pya1NrN8ehRdyiJ0/AxgPoojJZA0h4uGg==
+"@posh/ast@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@posh/ast/-/ast-0.6.0.tgz#b024b4f4ca0ef92b4dd50b6e22ca84251adbd106"
+  integrity sha512-Y5PH+iBfnt13AZrG4KH3r9Aj0m9Nlu56STX1YZS0GLXp/9K/DH/TRjdKq2HXQoiJkhURW7DF2VKsczpAkZJ4IA==
   dependencies:
     "@babel/core" "^7.4.5"
     "@babel/generator" "^7.4.4"
